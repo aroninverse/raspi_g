@@ -9,6 +9,8 @@ PUB_TOPIC = "pi_g/device/0001/data"
 
 gpio_list = [26, 19, 13, 6, 5]
 
+DO_ACTIVE_LOW = True
+
 
 def mqtt_on_connect(client, userdata, flags, rc):
     print(f"[MQTT] Connected with result code (rc = {rc})")
@@ -24,8 +26,11 @@ def mqtt_on_message(client, userdata, msg):
         pin = jobj["pin"]
         value = jobj["value"]
         gpio = gpio_list[pin - 1]
-        print(f"Set gpio-{gpio} to {value}")
-        GPIO.output(gpio, False if value == 1 else True)
+
+        if value == 1:
+            GPIO.output(gpio, False if DO_ACTIVE_LOW else True)
+        else:
+            GPIO.output(gpio, True if DO_ACTIVE_LOW else False)
     except:
         pass
 
@@ -37,7 +42,7 @@ if __name__ == '__main__':
     GPIO.setmode(GPIO.BCM)
     for gpio in gpio_list:
         GPIO.setup(gpio, GPIO.OUT)
-        GPIO.output(gpio, False)
+        GPIO.output(gpio, True if DO_ACTIVE_LOW else False)
 
     # Init modbus
     modbus = minimalmodbus.Instrument('/dev/ttyAMA0', 18)

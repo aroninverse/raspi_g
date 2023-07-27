@@ -1,6 +1,6 @@
 # raspi_g
 
-This is a simple raspberry pi sensor gateway project. It reads SHT3x sensors by RS485 and publishs the data to PC or APP by MQTT. There are predefine five GPIOs (GPIO5, GPIO6, GPIO13, GPIO19 and GPIO26) to be output mode. You can use these GPIOs to controll device (Ex. LEDs, motors).
+This is a simple raspberry pi sensor gateway project. It reads SHT3x sensor by RS485 and publishs the data to PC or APP by MQTT. There are predefine five GPIOs (GPIO5, GPIO6, GPIO13, GPIO19 and GPIO26) to be output mode. You can use these GPIOs to control devices (Ex. LEDs, motors).
 
 GPIO number|Description
 ---|---

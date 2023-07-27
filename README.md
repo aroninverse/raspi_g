@@ -64,4 +64,4 @@ Successfully installed RPi.GPIO-0.7.1 minimalmodbus-2.1.1 paho-mqtt-1.6.1 pyseri
 
 ## Disable Bluetooth
 
-Add `dtoverlay=pi3-disable-bt` to /boot/config.tx and reboot device.
+Add `dtoverlay=pi3-disable-bt` to /boot/config.txt and reboot device.

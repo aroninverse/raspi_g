@@ -17,6 +17,8 @@ GPIO number|Description
 
 [Pinout](https://pinout.xyz/)
 
+![pinout](imgs/raspberry-pi3-pins.png)
+
 
 ## Install Python libraries
 
@@ -39,3 +41,27 @@ Collecting RPi.GPIO==0.7.1 (from -r requirements.txt (line 4))
 Installing collected packages: RPi.GPIO, pyserial, paho-mqtt, minimalmodbus
 Successfully installed RPi.GPIO-0.7.1 minimalmodbus-2.1.1 paho-mqtt-1.6.1 pyserial-3.5
 ```
+
+
+## Enable UART
+
+1. Enter following command in Terminal
+```shell
+# sudo raspi-config
+```
+2. Select **Interfacing Options**
+![raspi_config1](imgs/raspi_config_1.png)
+3. Then select **Serial**
+![raspi_config2](imgs/raspi_config_2.png)
+4. The it will ask for login shell to be accessible over Serial, select **No**
+![raspi_config3](imgs/raspi_config_3.png)
+5. Then it will as for enabling Hardward serial port, select **Yes**
+![raspi_config4](imgs/raspi_config_4.png)
+6. Finally, out UART is eanbled for Serial Communication.
+![raspi_config5](imgs/raspi_config_5.png)
+7. Reboot device
+
+
+## Disable Bluetooth
+
+Add `dtoverlay=pi3-disable-bt` to /boot/config.tx and reboot device.
